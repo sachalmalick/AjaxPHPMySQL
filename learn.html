@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Let AJAX change this text.</p>
+
+<a href = "simple.php" id = "hi">Change Content</a>
+
+<script>
+
+var myText = document.getElementById("hi");
+myText.onclick = function () {
+	loadDoc();
+};
+
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+     document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "localhost/add.php", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
